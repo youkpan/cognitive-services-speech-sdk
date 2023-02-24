@@ -28,7 +28,7 @@ except ImportError:
 # Replace with your own subscription key and service region (e.g., "centralus").
 # See the limitations in supported regions,
 # https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_key, service_region = "66fc9b64ff8546b9a6c23433f3f79c36", "eastasia"
 
 # This sample uses a wavfile which is captured using a supported Speech SDK devices (8 channel, 16kHz, 16-bit PCM)
 # See https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-microphone
@@ -79,8 +79,8 @@ def conversation_transcription_differentiate_speakers():
     # Add participants to the conversation.
     # Note user voice signatures are not required for speaker differentiation.
     # Use voice signatures when adding participants when more enhanced speaker identification is required.
-    katie = speechsdk.transcription.Participant("katie@example.com", "en-us")
-    stevie = speechsdk.transcription.Participant("stevie@example.com", "en-us")
+    katie = speechsdk.transcription.Participant("katie@example.com", "zh-CN")
+    stevie = speechsdk.transcription.Participant("stevie@example.com", "zh-CN")
 
     conversation.add_participant_async(katie)
     conversation.add_participant_async(stevie)

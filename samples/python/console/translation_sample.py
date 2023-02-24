@@ -23,7 +23,7 @@ except ImportError:
 
 # Set up the subscription info for the Speech Service:
 # Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_key, service_region = "66fc9b64ff8546b9a6c23433f3f79c36", "eastasia"
 
 # Specify the path to audio files containing speech (mono WAV / PCM with a sampling rate of 16
 # kHz).
@@ -37,7 +37,7 @@ def translation_once_from_mic():
     # set up translation parameters: source language and target languages
     translation_config = speechsdk.translation.SpeechTranslationConfig(
         subscription=speech_key, region=service_region,
-        speech_recognition_language='en-US',
+        speech_recognition_language='zh-CN',
         target_languages=('de', 'fr', 'zh-Hans'))
     audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
 
@@ -79,7 +79,7 @@ def translation_once_from_file():
     # set up translation parameters: source language and target languages
     translation_config = speechsdk.translation.SpeechTranslationConfig(
         subscription=speech_key, region=service_region,
-        speech_recognition_language='en-US',
+        speech_recognition_language='zh-CN',
         target_languages=('de', 'fr'))
     audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
 
@@ -118,7 +118,7 @@ def translation_continuous():
     # set up translation parameters: source language and target languages
     translation_config = speechsdk.translation.SpeechTranslationConfig(
         subscription=speech_key, region=service_region,
-        speech_recognition_language='en-US',
+        speech_recognition_language='zh-CN',
         target_languages=('de', 'fr'), voice_name="de-DE-KatjaNeural")
     audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
 
@@ -194,7 +194,7 @@ def translation_once_with_lid_from_file():
 
     # Specify the AutoDetectSourceLanguageConfig, which defines the number of possible source (input) languages
     auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
-        languages=["en-US", "de-DE", "zh-CN"])
+        languages=["zh-CN", "de-DE", "zh-CN"])
 
     # Creates a translation recognizer using an audio file as input.
     recognizer = speechsdk.translation.TranslationRecognizer(
@@ -250,7 +250,7 @@ def translation_continuous_with_lid_from_multilingual_file():
 
     # Specify the AutoDetectSourceLanguageConfig, which defines the number of possible languages
     auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
-        languages=["en-US", "zh-CN"])
+        languages=["zh-CN", "zh-CN"])
 
     # Creates a translation recognizer using and audio file as input.
     recognizer = speechsdk.translation.TranslationRecognizer(

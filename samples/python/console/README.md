@@ -41,8 +41,8 @@ This sample demonstrates various forms of speech recognition, intent recognition
 * [Download the sample code to your development PC.](/README.md#get-the-samples)
 * To tailor the sample to your configuration, use search and replace across the whole sample directory to update the following strings:
 
-  * `YourSubscriptionKey`: replace with your subscription key.
-  * `YourServiceRegion`: replace with the [region](https://aka.ms/csspeech/region) your subscription is associated with.
+  * `66fc9b64ff8546b9a6c23433f3f79c36`: replace with your subscription key.
+  * `eastasia`: replace with the [region](https://aka.ms/csspeech/region) your subscription is associated with.
     For example, `westus` or `northeurope`.
   * The following settings apply for intent recognition powered by the [Language Understanding service (LUIS)](https://aka.ms/csspeech/luisdocs):
     * `YourLanguageUnderstandingSubscriptionKey`: replace with your Language Understanding service subscription key (endpoint key).

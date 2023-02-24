@@ -22,7 +22,7 @@ except ImportError:
 
 # Set up the subscription info for the Speech Service:
 # Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_key, service_region = "66fc9b64ff8546b9a6c23433f3f79c36", "eastasia"
 
 
 def speech_synthesis_to_speaker() -> None:
@@ -30,7 +30,7 @@ def speech_synthesis_to_speaker() -> None:
     # Creates an instance of a speech config with specified subscription key and service region.
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
     # Creates a speech synthesizer using the default speaker as audio output.
-    # The default spoken language is "en-us".
+    # The default spoken language is "zh-CN".
     speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
 
     # Receives a text from console input and synthesizes it to speaker.
@@ -87,12 +87,12 @@ def speech_synthesis_with_voice():
     # Creates an instance of a speech config with specified subscription key and service region.
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
     # Sets the synthesis voice name.
-    # e.g. "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)".
+    # e.g. "Microsoft Server Speech Text to Speech Voice (zh-CN, JennyNeural)".
     # The full list of supported voices can be found here:
     # https://aka.ms/csspeech/voicenames
     # And, you can try get_voices_async method to get all available voices.
     # See speech_synthesis_get_available_voices() sample below.
-    voice = "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)"
+    voice = "Microsoft Server Speech Text to Speech Voice (zh-CN, JennyNeural)"
     speech_config.speech_synthesis_voice_name = voice
     # Creates a speech synthesizer for the specified voice,
     # using the default speaker as audio output.
@@ -520,9 +520,9 @@ def speech_synthesis_bookmark_event():
     input()
 
     # Bookmark tag is needed in the SSML, e.g.
-    ssml = "<speak version='1.0' xml:lang='en-US' xmlns='http://www.w3.org/2001/10/synthesis' " \
+    ssml = "<speak version='1.0' xml:lang='zh-CN' xmlns='http://www.w3.org/2001/10/synthesis' " \
            "xmlns:mstts='http://www.w3.org/2001/mstts'>" \
-           "<voice name='Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)'>" \
+           "<voice name='Microsoft Server Speech Text to Speech Voice (zh-CN, AriaNeural)'>" \
            "<bookmark mark='bookmark_one'/> one. " \
            "<bookmark mark='bookmark_two'/> two. three. four.</voice></speak> "
 
@@ -578,7 +578,7 @@ def speech_synthesis_get_available_voices():
     # Creates a speech synthesizer.
     speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=None)
 
-    print("Enter a locale in BCP-47 format (e.g. en-US) that you want to get the voices of, "
+    print("Enter a locale in BCP-47 format (e.g. zh-CN) that you want to get the voices of, "
           "or enter empty to get voices in all locales.")
     try:
         text = input()

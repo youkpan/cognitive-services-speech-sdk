@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 class LongTextSynthesizer:
     def __init__(self, subscription: str, region: str, language: str = 'english',
-                 voice: str = 'en-US-JennyNeural', parallel_threads: int = 8) -> None:
+                 voice: str = 'zh-CN-JennyNeural', parallel_threads: int = 8) -> None:
         self.is_ssml = None
         self.subscription = subscription
         self.region = region
@@ -146,7 +146,7 @@ class LongTextSynthesizer:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
-    s = LongTextSynthesizer(subscription="YourSubscriptionKey", region="YourServiceRegion")
+    s = LongTextSynthesizer(subscription="66fc9b64ff8546b9a6c23433f3f79c36", region="eastasia")
     with Path('./Gatsby-chapter1.txt').open('r', encoding='utf-8') as r:
         s.synthesize_text(r.read(), output_path=Path('./gatsby'))
     s.synthesize_text(ssml_path=Path('multi-role.xml'), output_path=Path('./multi-role'))

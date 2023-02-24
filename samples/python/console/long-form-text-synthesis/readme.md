@@ -24,8 +24,8 @@ The basic steps to synthesize long-form text shown in this sample are
 
 Update the following strings before running the sample:
 
-  * `YourSubscriptionKey`: replace with your subscription key.
-  * `YourServiceRegion`: replace with the [region](https://aka.ms/csspeech/region) your subscription is associated with.
+  * `66fc9b64ff8546b9a6c23433f3f79c36`: replace with your subscription key.
+  * `eastasia`: replace with the [region](https://aka.ms/csspeech/region) your subscription is associated with.
 
 You may want to update other configuration such as `VoiceName` and `OutputFormat`.
 

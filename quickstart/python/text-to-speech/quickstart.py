@@ -6,12 +6,12 @@ import azure.cognitiveservices.speech as speechsdk
 
 # Creates an instance of a speech config with specified subscription key and service region.
 # Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_key, service_region = "66fc9b64ff8546b9a6c23433f3f79c36", "eastasia"
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
 # Set the voice name, refer to https://aka.ms/speech/voices/neural for full list.
-speech_config.speech_synthesis_voice_name = "en-US-AriaNeural"
-
+speech_config.speech_synthesis_voice_name = "zh-CN-XiaochenNeural"
+speech_config.speech_recognition_language = "zh-CN"
 # Creates a speech synthesizer using the default speaker as audio output.
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
 

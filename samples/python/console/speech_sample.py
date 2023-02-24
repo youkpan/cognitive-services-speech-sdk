@@ -28,7 +28,7 @@ except ImportError:
 
 # Set up the subscription info for the Speech Service:
 # Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_key, service_region = "66fc9b64ff8546b9a6c23433f3f79c36", "eastasia"
 
 # Specify the path to an audio file containing speech (mono WAV / PCM with a sampling rate of 16
 # kHz).
@@ -41,7 +41,7 @@ def speech_recognize_once_from_mic():
     # <SpeechRecognitionWithMicrophone>
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
     # Creates a speech recognizer using microphone as audio input.
-    # The default language is "en-us".
+    # The default language is "zh-CN".
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
     # Starts speech recognition, and returns after a single utterance is recognized. The end of a
@@ -114,7 +114,7 @@ def speech_recognize_once_from_file_with_detailed_recognition_results():
 
     # Creates a speech recognizer using a file as audio input, also specify the speech language
     speech_recognizer = speechsdk.SpeechRecognizer(
-        speech_config=speech_config, language="en-US", audio_config=audio_config)
+        speech_config=speech_config, language="zh-CN", audio_config=audio_config)
 
     # Starts speech recognition, and returns after a single utterance is recognized. The end of a
     # single utterance is determined by listening for silence at the end or until a maximum of 15
@@ -267,7 +267,7 @@ def speech_recognize_once_from_file_with_custom_endpoint_parameters():
     print("Using endpoint", speech_config.get_property(speechsdk.PropertyId.SpeechServiceConnection_Endpoint))
     audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
     # Creates a speech recognizer using a file as audio input.
-    # The default language is "en-us".
+    # The default language is "zh-CN".
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
     # Starts speech recognition, and returns after a single utterance is recognized. The end of a
@@ -295,7 +295,7 @@ def speech_recognize_async_from_file():
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
     audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
     # Creates a speech recognizer using a file as audio input.
-    # The default language is "en-us".
+    # The default language is "zh-CN".
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
     # Perform recognition. `recognize_async` does not block until recognition is complete,
@@ -360,7 +360,8 @@ def speech_recognize_continuous_from_file():
 def speech_recognize_continuous_async_from_microphone():
     """performs continuous speech recognition asynchronously with input from microphone"""
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-    # The default language is "en-us".
+    # The default language is "zh-CN".
+    speech_config.speech_recognition_language = "zh-CN"
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
 
     done = False
@@ -598,7 +599,7 @@ def speech_recognize_once_with_auto_language_detection_from_mic():
 
     # create the auto detection language configuration with the potential source language candidates
     auto_detect_source_language_config = \
-        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["de-DE", "en-US"])
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["de-DE", "zh-CN"])
     speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, auto_detect_source_language_config=auto_detect_source_language_config)
     result = speech_recognizer.recognize_once()
@@ -624,7 +625,7 @@ def speech_recognize_with_auto_language_detection_UsingCustomizedModel():
     # Replace the languages with your languages in BCP-47 format, e.g. fr-FR.
     # Please see https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support
     # for all supported languages
-    en_language_config = speechsdk.languageconfig.SourceLanguageConfig("en-US")
+    en_language_config = speechsdk.languageconfig.SourceLanguageConfig("zh-CN")
     # Replace the languages with your languages in BCP-47 format, e.g. zh-CN.
     # Set the endpoint ID of your customized mode that will be used for fr-FR.
     # Replace with your own CRIS endpoint ID.
@@ -733,7 +734,7 @@ def pronunciation_assessment_from_microphone():
         enable_miscue=True)
 
     # Creates a speech recognizer, also specify the speech language
-    recognizer = speechsdk.SpeechRecognizer(speech_config=config, language="en-US")
+    recognizer = speechsdk.SpeechRecognizer(speech_config=config, language="zh-CN")
     while True:
         # Receives reference text from console input.
         print('Enter reference text you want to assess, or enter empty text to exit.')
@@ -791,7 +792,7 @@ def pronunciation_assessment_continuous_from_file():
 
     # Creates an instance of a speech config with specified subscription key and service region.
     # Replace with your own subscription key and service region (e.g., "westus").
-    # Note: The pronunciation assessment feature is currently only available on en-US language.
+    # Note: The pronunciation assessment feature is currently only available on zh-CN language.
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
     audio_config = speechsdk.audio.AudioConfig(filename=weatherfilename)
 
@@ -805,7 +806,7 @@ def pronunciation_assessment_continuous_from_file():
         enable_miscue=enable_miscue)
 
     # Creates a speech recognizer using a file as audio input.
-    language = 'en-US'
+    language = 'zh-CN'
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, language=language, audio_config=audio_config)
     # apply pronunciation assessment config to speech recognizer
     pronunciation_config.apply_to(speech_recognizer)

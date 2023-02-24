@@ -4,37 +4,39 @@
 <head>
     <title>Speech Sample</title>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="//boxmy.hayoou.com/1676640303299/pico.min.css">
+    <link rel="stylesheet" href="./mobile.css">
     <script type="text/javascript" src="./difflib-browser.js"></script>
 </head>
 
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
-    <div id="warning">
-        <h1 style="font-weight:500;">Speech Recognition Speech SDK not found
-            (microsoft.cognitiveservices.speech.sdk.bundle.js missing).</h1>
+<div class="wrap">
+<div id="warning">
+        <h2 style="font-weight:200;">加载中</h2>
     </div>
     <div id="content" style="display:none">
         <table>
             <tr>
                 <td></td>
                 <td>
-                    <h2 style="font-weight:500;">Microsoft Cognitive Services Speech SDK</h2>
-                    <h3 style="font-weight:500;">Javascript Browser Sample</h3>
+                    <h4 style="text-align:center;font-weight:300;">展映智慧助手<br>实时对话</h4>
                 </td>
             </tr>
-            <tr>
-                <td align="right"><a href="https://www.microsoft.com/cognitive-services/sign-up"
-                        target="_blank">Subscription</a>:</td>
+            <tr style="display:none">
+                <td align="right"><a href="https://www.microsoft.com/cognitive-services/sign-up" target="_blank">Subscription</a>:</td>
                 <td><input id="key" type="text" size="60" placeholder="required: speech subscription key"></td>
             </tr>
             <tr>
-                <td align="right">Region:</td>
-                <td align="left">
-                    <select id="regionOptions">
-                        <option value="westus" selected="selected">West US</option>
+                <td style="display:none" align="right">Region:</td>
+                <td style="display:none" align="left">
+                    <select id="regionOptions1">
+                        <option value="westus">West US</option>
                         <option value="westus2">West US 2</option>
                         <option value="eastus">East US</option>
                         <option value="eastus2">East US 2</option>
-                        <option value="eastasia">East Asia</option>
+                        <option value="eastasia" selected="selected">East Asia</option>
                         <option value="southeastasia">South East Asia</option>
                         <option value="northeurope">North Europe</option>
                         <option value="westeurope">West Europe</option>
@@ -43,15 +45,47 @@
                     </select>
                 </td>
             </tr>
+            <tr  style="display:none">
+                <td align="right"><label for="regionOptions">Region</label></td>
+                <td>
+                    <!--          see https://aka.ms/csspeech/region for more details-->
+                    <select id="regionOptions">
+                        <option value="westus" >West US</option>
+                        <option value="westus2">West US2</option>
+                        <option value="eastus">East US</option>
+                        <option value="eastus2">East US2</option>
+                        <option value="centralus">Central US</option>
+                        <option value="northcentralus">North Central US</option>
+                        <option value="southcentralus">South Central US</option>
+                        <option value="westcentralus">West Central US</option>
+                        <option value="canadacentral">Canada Central</option>
+                        <option value="brazilsouth">Brazil South</option>
+                        <option selected="selected" value="eastasia">East Asia</option>
+                        <option value="southeastasia">South East Asia</option>
+                        <option value="australiaeast">Australia East</option>
+                        <option value="centralindia">Central India</option>
+                        <option value="japaneast">Japan East</option>
+                        <option value="japanwest">Japan West</option>
+                        <option value="koreacentral">Korea Central</option>
+                        <option value="northeurope">North Europe</option>
+                        <option value="westeurope">West Europe</option>
+                        <option value="francecentral">France Central</option>
+                        <option value="switzerlandnorth">Switzerland North</option>
+                        <option value="uksouth">UK South</option>
+                        <option value="chinaeast2">China East2 (azure.cn)</option>
+                        <option value="chinanorth2">China North2 (azure.cn)</option>
+                    </select>
+                </td>
+            </tr>
             <tr>
-                <td align="right">Recognition language:</td>
+                <td align="right">你说的语言:</td>
                 <td align="left">
                     <!-- For the full list of supported languages see:
                         https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages -->
                     <select id="languageOptions">
                         <option value="ar-EG">Arabic - EG</option>
                         <option value="ca-ES">Catalan - ES</option>
-                        <option value="zh-CN">Chinese - CN</option>
+                        <option selected="selected" value="zh-CN">Chinese - CN</option>
                         <option value="zh-HK">Chinese - HK</option>
                         <option value="zh-TW">Chinese - TW</option>
                         <option value="da-DK">Danish - DK</option>
@@ -62,7 +96,7 @@
                         <option value="en-GB">English - GB</option>
                         <option value="en-IN">English - IN</option>
                         <option value="en-NZ">English - NZ</option>
-                        <option value="en-US" selected="selected">English - US</option>
+                        <option value="en-US">English - US</option>
                         <option value="de-DE">German - DE</option>
                         <option value="es-ES">Spanish - ES</option>
                         <option value="es-MX">Spanish - MX</option>
@@ -83,26 +117,40 @@
                 </td>
             </tr>
             <tr>
-                <td align="right">Audio Input:</td>
-                <td align="left">
-                    <input type="radio"
-                        name="inputSourceOption"
-                        checked="checked"
-                        id="inputSourceMicrophoneRadio"
-                        value="Microphone"/>
-                    <select id="microphoneSources" disabled="true"/>
-                    <input type="radio"
-                        name="inputSourceOption"
-                        id="inputSourceFileRadio"
-                        value="File"/>
+                <td align="right"><label for="voiceOptions">语音类型：</label></td>
+                <td>
+                    
+                    <select id="voiceOptions" disabled>
+                        <option>Please update voice list first.</option>
+                    </select>
+
+                    <button style="display:none" id="updateVoiceListButton">点击更新声音类型</button>
+                </td>
+            </tr>
+            <tr>
+                
+            <td align="right"><label for="formatOptions">音频输出格式：</label></td>
+            <td>
+                <select id="formatOptions">
+                    <option>Waiting for SDK loading.</option>
+                </select>
+                
+            </td>
+            </tr>
+            <tr>
+                <td style="display:none" align="right">Audio Input:</td>
+                <td style="display:none" align="left">
+                    <input type="radio" name="inputSourceOption" checked="checked" id="inputSourceMicrophoneRadio" value="Microphone" />
+                    <select id="microphoneSources" disabled="true" />
+                    <input type="radio" name="inputSourceOption" id="inputSourceFileRadio" value="File" />
                     <label id="inputSourceFileLabel" for="inputSourceFileRadio">Audio file</label>
                     <button id="inputSourceChooseFileButton" disabled="true">...</button>
                     <input type="file" id="filePicker" accept=".wav" style="display:none" />
                 </td>
             </tr>
             <tr>
-                <td align="right">Scenario:</td>
-                <td align="left">
+                <td style="display:none" align="right">Scenario:</td>
+                <td  style="display:none" align="left">
                     <select id="scenarioSelection">
                         <option value="speechRecognizerRecognizeOnce">Single-shot speech-to-text</option>
                         <option value="speechRecognizerContinuous">Continuous speech-to-text</option>
@@ -113,19 +161,12 @@
                     </select>
                 </td>
             </tr>
-            <tr id="formatOptionRow">
-                <td align="right">Result Format:</td>
-                <td align="left">
-                    <input type="radio"
-                        name="formatOption"
-                        checked="checked"
-                        id ="formatSimpleRadio"
-                        value="Simple"/>
+            <tr style="display:none" id="formatOptionRow">
+                <td style="display:none" align="right">Result Format:</td>
+                <td style="display:none" align="left">
+                    <input type="radio" name="formatOption" checked="checked" id="formatSimpleRadio" value="Simple" />
                     <label for="formatSimpleRadio">Simple</label>
-                    <input type="radio"
-                        name="formatOption"
-                        id ="formatDetailedRadio"
-                        value="Detailed"/>
+                    <input type="radio" name="formatOption" id="formatDetailedRadio" value="Detailed" />
                     <label for="formatDetailedRadio">Detailed</label>
                 </td>
             </tr>
@@ -172,21 +213,17 @@
             <tr id="languageUnderstandingAppIdRow">
                 <td align="right">Application ID:</td>
                 <td>
-                    <input id="appId" type="text" size="60" placeholder="required: appId for the Language Understanding service"/>
+                    <input id="appId" type="text" size="60" placeholder="required: appId for the Language Understanding service" />
                 </td>
             </tr>
-            <tr>
+            <tr style="display:none">
                 <td align="right">
                     <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-to-text#improve-recognition-accuracy">
                         Phrase List Values:
                     </a>
                 </td>
                 <td>
-                    <input id="phrases"
-                        type="text"
-                        size="60"
-                        value=""
-                        placeholder="optional: semicolon-delimited list;of;words">
+                    <input id="phrases" type="text" size="60" value="" placeholder="optional: semicolon-delimited list;of;words">
                 </td>
             </tr>
             <tr id="pronunciationAssessmentReferenceTextRow">
@@ -194,36 +231,597 @@
                     Reference Text:
                 </td>
                 <td>
-                    <input id="referenceText"
-                        type="text"
-                        size="60"
-                        value=""
-                        placeholder="pronunciation assessment reference text.">
+                    <input id="referenceText" type="text" size="60" value="" placeholder="pronunciation assessment reference text.">
                 </td>
             </tr>
             <tr>
-                <td align="right"><b></b></td>
+                <td align="right"><b>使用</b></td>
                 <td>
                     <button id="scenarioStartButton">Start</button>
                     <button id="scenarioStopButton" disabled="disabled">Stop</button>
                 </td>
             </tr>
             <tr>
-                <td align="right">Results:</td>
+                <td align="right">语音识别：</td>
                 <td align="left">
-                    <textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea>
+                    <textarea id="phraseDiv" style="display: inline-block;width:100%;height:200px"></textarea>
                 </td>
             </tr>
             <tr>
+                <td align="right"><label for="synthesisText">AI回复</label></td>
+                <td>
+                    <textarea id="synthesisText" style="display: inline-block;width:100%;height:300px" placeholder=" "></textarea>
+                </td>
+            </tr>
+            <tr style="display:none">
                 <td align="right">Events:</td>
                 <td align="left">
-                    <textarea id="statusDiv"
-                        style="display: inline-block;width:500px;height:200px;overflow: scroll;white-space: nowrap;">
+                    <textarea id="statusDiv" style="display: inline-block;width:500px;height:200px;overflow: scroll;white-space: nowrap;">
                     </textarea>
                 </td>
             </tr>
         </table>
     </div>
+    <!---------start hc.php------------>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #f1f1f1;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        textarea {
+            font-family: Arial, sans-serif;
+        }
+
+        .mode {
+            font-size: 18px;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        input:not(disabled) {
+            font-weight: bold;
+            color: black;
+        }
+
+        button {
+            padding: 4px 8px;
+            background: #0078d4;
+            color: #ffffff;
+        }
+
+        button:disabled {
+            padding: 4px 8px;
+            background: #ccc;
+            color: #666;
+        }
+
+        input[type=radio] {
+            position: relative;
+            z-index: 1;
+        }
+
+        input[type=radio]+label {
+            padding: 8px 4px 8px 30px;
+            margin-left: -30px;
+        }
+
+        input[type=radio]:checked+label {
+            background: #0078d4;
+            color: #ffffff;
+        }
+    </style>
+
+    <div id="warning">
+
+    </div>
+
+    <div id="content2"  style="display:none">
+        <table>
+            <tr>
+                <td></td>
+                <td>
+                    <h1 style="font-weight:500;">Microsoft Cognitive Services Speech SDK JavaScript Sample for Speech Synthesis</h1>
+                </td>
+            </tr>
+            <tr style="display:none">
+                <td style="display:none" align="right">
+                    <label for="subscriptionKey">
+                        <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started" rel="noreferrer noopener" target="_blank">Subscription Key</a>
+                    </label>
+                </td>
+                <td style="display:none"><input id="subscriptionKey" type="text" size="40" placeholder="YourSubscriptionKey"></td>
+            </tr>
+            
+
+            <tr>
+                <td align="right"><label for="isSSML">Is SSML</label><br></td>
+                <td>
+                    <input type="checkbox" id="isSSML" name="isSSML" value="ssml">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button id="startSynthesisAsyncButton">Start synthesis</button>
+                    <button id="pauseButton">Pause</button>
+                    <button id="resumeButton">Resume</button>
+                    <button id="downloadButton">Download</button>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" valign="top"><label for="resultsDiv">Results</label></td>
+                <td><textarea id="resultsDiv" readonly style="display: inline-block;width:500px;height:50px"></textarea></td>
+            </tr>
+            <tr>
+                <td align="right" valign="top"><label for="talkingHeadDiv">
+                        <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme?pivots=programming-language-javascript" rel="noreferrer noopener" target="_blank">Talking Head</a></label></td>
+                <td>
+                    <div id="talkingHeadDiv" style="display: inline-block;width:800px;"></div>
+                </td>
+            </tr>
+            <tr style="display:none">
+                <td align="right" valign="top"><label for="eventsDiv">Events</label></td>
+                <td><textarea id="eventsDiv" readonly style="display: inline-block;width:500px;height:200px"></textarea></td>
+            </tr>
+            <tr>
+                <td align="right" valign="top"><label for="highlightDiv">Highlight</label></td>
+                <td>
+                    <div id="highlightDiv" style="display: inline-block;width:800px;"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Speech SDK reference sdk. -->
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Speech Speech SDK Authorization token -->
+    <script>
+        is_listen = true;
+        is_listen_finished = true;
+        prompt0 = "You are a super artificial intelligence AI assistant created by 展映科技 based on OpenAI chatGPT."+
+	"You are very friendly,intelligent,helpful,and creative. Your answers should be as short,intuitive,logical,positive and interesting." +
+	" But you don't have the internet and don't know the time.The following is a conversation between a person and you.\n"
+        context = ""
+        send_prompt = ""
+        voice_name_list =[]
+        // Note: Replace the URL with a valid endpoint to retrieve
+        //       authorization tokens for your subscription.
+
+        // An authorization token is a more secure method to authenticate for a browser deployment as
+        // it allows the subscription keys to be kept secure on a server and a 10 minute use token to be
+        // handed out to clients from an endpoint that can be protected from unauthorized access.
+        var authorizationEndpoint = "token.php";
+
+        async function RequestAuthorizationToken() {
+            if (authorizationEndpoint) {
+                try {
+                    const res = await axios.get(authorizationEndpoint);
+                    const token = res.data.token;
+                    const region = res.data.region;
+                    regionOptions.value = region;
+                    authorizationToken = token;
+
+                    console.log('Token fetched from 2 back-end: ' + token);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }
+    </script>
+
+    <!-- Speech SDK USAGE -->
+    <script>
+        // On document load resolve the Speech SDK dependency
+        function Initialize(onComplete) {
+            if (!!window.SpeechSDK) {
+                document.getElementById('content2').style.display = 'block';
+                document.getElementById('warning').style.display = 'none';
+                onComplete(window.SpeechSDK);
+            }
+        }
+    </script>
+
+    <!-- Browser Hooks -->
+    <script>
+        // status fields and start button in UI
+        var resultsDiv,
+            eventsDiv,
+            talkingHeadDiv,
+            highlightDiv;
+        var startSynthesisAsyncButton, pauseButton, resumeButton, downloadButton;
+        var updateVoiceListButton;
+
+        // subscription key and region for speech services.
+        var subscriptionKey, regionOptions;
+        var authorizationToken;
+        var voiceOptions, isSsml;
+        var SpeechSDK;
+        var synthesisText;
+        var synthesizer;
+        var player;
+        var wordBoundaryList = [];
+
+        function getExtensionFromFormat(format) {
+            format = format.toLowerCase();
+            if (format.includes('mp3')) {
+                return 'mp3';
+            } else if (format.includes('ogg')) {
+                return 'ogg';
+            } else if (format.includes('webm')) {
+                return 'webm';
+            } else if (format.includes('ogg')) {
+                return 'ogg';
+            } else if (format.includes('silk')) {
+                return 'silk';
+            } else if (format.includes('riff')) {
+                return 'wav';
+            } else {
+                return 'pcm';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            startSynthesisAsyncButton = document.getElementById("startSynthesisAsyncButton");
+            updateVoiceListButton = document.getElementById("updateVoiceListButton");
+            pauseButton = document.getElementById("pauseButton");
+            resumeButton = document.getElementById("resumeButton");
+            downloadButton = document.getElementById("downloadButton");
+            subscriptionKey = document.getElementById("subscriptionKey");
+            regionOptions = document.getElementById("regionOptions");
+            resultsDiv = document.getElementById("resultsDiv");
+            eventsDiv = document.getElementById("eventsDiv");
+            voiceOptions = document.getElementById("voiceOptions");
+            isSsml = document.getElementById("isSSML");
+            talkingHeadDiv = document.getElementById("talkingHeadDiv");
+            highlightDiv = document.getElementById("highlightDiv");
+
+            setInterval(function() {
+                if (player !== undefined) {
+                    const currentTime = player.currentTime;
+                    var wordBoundary;
+                    for (const e of wordBoundaryList) {
+                        if (currentTime * 1000 > e.audioOffset / 10000) {
+                            wordBoundary = e;
+                        } else {
+                            break;
+                        }
+                    }
+                    if (wordBoundary !== undefined) {
+                        highlightDiv.innerHTML = synthesisText.value.substr(0, wordBoundary.textOffset) +
+                            "<span class='highlight'>" + wordBoundary.text + "</span>" +
+                            synthesisText.value.substr(wordBoundary.textOffset + wordBoundary.wordLength);
+                    } else {
+                        highlightDiv.innerHTML = synthesisText.value;
+                    }
+                }
+            }, 50);
+
+            updateVoiceListButton.addEventListener("click", function() {
+                updateVoiceList()
+            });
+
+            pauseButton.addEventListener("click", function() {
+                player.pause();
+                pauseButton.disabled = true;
+                resumeButton.disabled = false;
+            });
+
+            resumeButton.addEventListener("click", function() {
+                player.resume();
+                pauseButton.disabled = false;
+                resumeButton.disabled = true;
+            });
+
+            startSynthesisAsyncButton.addEventListener("click", function() {
+
+                hechen()
+            });
+            
+
+            downloadButton.addEventListener("click", function() {
+                resultsDiv.innerHTML = "";
+                eventsDiv.innerHTML = "";
+                synthesisText = document.getElementById("synthesisText");
+
+                var speechConfig;
+
+                // if we got an authorization token, use the token. Otherwise use the provided subscription key
+                if (authorizationToken) {
+                    speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionOptions.value);
+                } else {
+                    if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+                        alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+                        return;
+                    }
+                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionOptions.value);
+                }
+
+                speechConfig.speechSynthesisVoiceName = voiceOptions.value;
+                speechConfig.speechSynthesisOutputFormat = formatOptions.value;
+
+                synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, null);
+
+                synthesizer.SynthesisCanceled = function(s, e) {
+                    const cancellationDetails = SpeechSDK.CancellationDetails.fromResult(e.result);
+                    let str = "(cancel) Reason: " + SpeechSDK.CancellationReason[cancellationDetails.reason];
+                    if (cancellationDetails.reason === SpeechSDK.CancellationReason.Error) {
+                        str += ": " + e.result.errorDetails;
+                    }
+                    window.console.log(e);
+                    eventsDiv.innerHTML += str + "\r\n";
+                    resultsDiv.innerHTML = str;
+                    startSynthesisAsyncButton.disabled = false;
+                    downloadButton.disabled = false;
+                    pauseButton.disabled = true;
+                    resumeButton.disabled = true;
+                };
+
+                synthesizer.synthesisCompleted = function(s, e) {
+                    resultsDiv.innerHTML = "synthesis finished";
+                    synthesizer.close();
+                    a = document.createElement('a');
+                    url = window.URL.createObjectURL(new Blob([e.result.audioData]));
+                    a.href = url;
+                    a.download = 'synth.' + getExtensionFromFormat(formatOptions.options[formatOptions.selectedIndex].text);
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(function() {
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }, 0);
+                    startSynthesisAsyncButton.disabled = false;
+                    downloadButton.disabled = false;
+                };
+
+                if (!synthesisText.value) {
+                    alert("Please enter synthesis content.");
+                }
+
+                startSynthesisAsyncButton.disabled = true;
+                downloadButton.disabled = true;
+
+                if (isSsml.checked) {
+                    synthesizer.speakSsmlAsync(synthesisText.value);
+                } else {
+                    synthesizer.speakTextAsync(synthesisText.value);
+                }
+            });
+
+            Initialize(async function(speechSdk) {
+                SpeechSDK = speechSdk;
+                startSynthesisAsyncButton.disabled = false;
+                downloadButton.disabled = false;
+                pauseButton.disabled = true;
+                resumeButton.disabled = true;
+
+                formatOptions.innerHTML = "";
+                Object.keys(SpeechSDK.SpeechSynthesisOutputFormat).forEach(format => {
+                    if (isNaN(format) && !format.includes('Siren')) {
+                        formatOptions.innerHTML += "<option value=\"" + SpeechSDK.SpeechSynthesisOutputFormat[format] + "\">" + format + "</option>"
+                    }
+                });
+                formatOptions.selectedIndex = SpeechSDK.SpeechSynthesisOutputFormat.Audio24Khz48KBitRateMonoMp3;
+
+                // in case we have a function for getting an authorization token, call it.
+                if (typeof RequestAuthorizationToken === "function") {
+                    await RequestAuthorizationToken();
+                }
+            });
+        });
+        </script>
+        <script>
+
+            function updateVoiceList(){
+                
+                var request = new XMLHttpRequest();
+                request.open('GET',
+                    'https://' + regionOptions.value + ".tts.speech." +
+                    (regionOptions.value.startsWith("china") ? "azure.cn" : "microsoft.com") +
+                    "/cognitiveservices/voices/list", true);
+                if (authorizationToken) {
+                    request.setRequestHeader("Authorization", "Bearer " + authorizationToken);
+                } else {
+                    if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+                        alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+                        return;
+                    }
+                    request.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey.value);
+                }
+
+                request.onload = function() {
+                    if (request.status >= 200 && request.status < 400) {
+                        const response = this.response;
+                        const defaultVoice = "XiaoxiaoNeural";
+                        let selectId;
+                        const data = JSON.parse(response);
+                        voiceOptions.innerHTML = "";
+                        data.forEach((voice, index) => {
+                            voice_name_list[index] = voice.Name
+                            voice.Name = voice.Name.replace("Microsoft Server Speech Text to Speech Voice","声音")
+                            voiceOptions.innerHTML += "<option value=\"" + voice.Name + "\">" + voice.Name + "</option>";
+                            if (voice.Name.indexOf(defaultVoice) > 0) {
+                                selectId = index;
+                            }
+                        });
+                        voiceOptions.selectedIndex = selectId;
+                        voiceOptions.disabled = false;
+                    } else {
+                        window.console.log(this);
+                        eventsDiv.innerHTML += "cannot get voice list, code: " + this.status + " detail: " + this.statusText + "\r\n";
+                    }
+                };
+
+                request.send()
+            }
+
+
+        function hechen(){
+                
+                resultsDiv.innerHTML = "";
+                eventsDiv.innerHTML = "";
+                wordBoundaryList = [];
+                synthesisText = document.getElementById("synthesisText");
+                synthesisText.value = send_prompt
+                
+                // if we got an authorization token, use the token. Otherwise use the provided subscription key
+                var speechConfig;
+                if (authorizationToken) {
+                    speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken, regionOptions.value);
+                } else {
+                    if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+                        alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+                        return;
+                    }
+                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey.value, regionOptions.value);
+                }
+
+                speechConfig.speechSynthesisVoiceName =voice_name_list[voiceOptions.selectedIndex]
+                //  voiceOptions.value;
+                speechConfig.speechSynthesisOutputFormat = formatOptions.value;
+
+                player = new SpeechSDK.SpeakerAudioDestination();
+                player.onAudioStart = function(_) {
+                    window.console.log("playback started");
+                    setTimeout(function() {
+                        $("svg path :first-child").each(function(i) {
+                            this.beginElement();
+                        });
+                    }, 0.5);
+                }
+                player.onAudioEnd = function(_) {
+                    window.console.log("playback finished");
+                    eventsDiv.innerHTML += "playback finished" + "\r\n";
+                    startSynthesisAsyncButton.disabled = false;
+                    downloadButton.disabled = false;
+                    pauseButton.disabled = true;
+                    resumeButton.disabled = true;
+                    wordBoundaryList = [];
+
+                    is_listen_finished = true
+                    
+                    doRecognizeOnceAsync();
+                };
+
+                var audioConfig = SpeechSDK.AudioConfig.fromSpeakerOutput(player);
+
+                synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, audioConfig);
+
+                // The event synthesizing signals that a synthesized audio chunk is received.
+                // You will receive one or more synthesizing events as a speech phrase is synthesized.
+                // You can use this callback to streaming receive the synthesized audio.
+                synthesizer.synthesizing = function(s, e) {
+                    window.console.log(e);
+                    eventsDiv.innerHTML += "(synthesizing) Reason: " + SpeechSDK.ResultReason[e.result.reason] +
+                        "Audio chunk length: " + e.result.audioData.byteLength + "\r\n";
+                };
+
+                // The synthesis started event signals that the synthesis is started.
+                synthesizer.synthesisStarted = function(s, e) {
+                    window.console.log(e);
+                    eventsDiv.innerHTML += "(synthesis started)" + "\r\n";
+                    pauseButton.disabled = false;
+                };
+
+                // The event synthesis completed signals that the synthesis is completed.
+                synthesizer.synthesisCompleted = function(s, e) {
+                    console.log(e);
+                    eventsDiv.innerHTML += "(synthesized)  Reason: " + SpeechSDK.ResultReason[e.result.reason] +
+                        " Audio length: " + e.result.audioData.byteLength + "\r\n";
+                };
+
+                // The event signals that the service has stopped processing speech.
+                // This can happen when an error is encountered.
+                synthesizer.SynthesisCanceled = function(s, e) {
+                    const cancellationDetails = SpeechSDK.CancellationDetails.fromResult(e.result);
+                    let str = "(cancel) Reason: " + SpeechSDK.CancellationReason[cancellationDetails.reason];
+                    if (cancellationDetails.reason === SpeechSDK.CancellationReason.Error) {
+                        str += ": " + e.result.errorDetails;
+                    }
+                    window.console.log(e);
+                    eventsDiv.innerHTML += str + "\r\n";
+                    startSynthesisAsyncButton.disabled = false;
+                    downloadButton.disabled = false;
+                    pauseButton.disabled = true;
+                    resumeButton.disabled = true;
+                };
+
+                // This event signals that word boundary is received. This indicates the audio boundary of each word.
+                // The unit of e.audioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+                synthesizer.wordBoundary = function(s, e) {
+                    window.console.log(e);
+                    eventsDiv.innerHTML += "(WordBoundary), Text: " + e.text + ", Audio offset: " + e.audioOffset / 10000 + "ms." + "\r\n";
+                    wordBoundaryList.push(e);
+                };
+
+                synthesizer.visemeReceived = function(s, e) {
+                    window.console.log(e);
+                    eventsDiv.innerHTML += "(Viseme), Audio offset: " + e.audioOffset / 10000 + "ms. Viseme ID: " + e.visemeId + '\n';
+                    talkingHeadDiv.innerHTML = e.animation.replaceAll("begin=\"0.5s\"", "begin=\"indefinite\"");
+                    $("svg").width('500px').height('500px');
+                }
+
+                synthesizer.bookmarkReached = function(s, e) {
+                    window.console.log(e);
+                    eventsDiv.innerHTML += "(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms. Bookmark text: " + e.text + '\n';
+                }
+
+                const complete_cb = function(result) {
+                    if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
+                        resultsDiv.innerHTML += "synthesis finished";
+                    } else if (result.reason === SpeechSDK.ResultReason.Canceled) {
+                        resultsDiv.innerHTML += "synthesis failed. Error detail: " + result.errorDetails;
+                    }
+                    window.console.log(result);
+                    synthesizer.close();
+                    synthesizer = undefined;
+                };
+                const err_cb = function(err) {
+                    startSynthesisAsyncButton.disabled = false;
+                    downloadButton.disabled = false;
+                    phraseDiv.innerHTML += err;
+                    window.console.log(err);
+                    synthesizer.close();
+                    synthesizer = undefined;
+                };
+
+                if (!synthesisText.value) {
+                    alert("Please enter synthesis content.");
+                    return;
+                }
+
+                startSynthesisAsyncButton.disabled = true;
+                downloadButton.disabled = true;
+
+                if (isSsml.checked) {
+                    synthesizer.speakSsmlAsync(synthesisText.value,
+                        complete_cb,
+                        err_cb);
+                } else {
+                    synthesizer.speakTextAsync(synthesisText.value,
+                        complete_cb,
+                        err_cb);
+                }
+            }
+    </script>
 
     <!-- Speech SDK REFERENCE -->
     <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
@@ -237,22 +835,27 @@
         // An authorization token is a more secure method to authenticate for a browser deployment as
         // it allows the subscription keys to be kept secure on a server and a 10 minute use token to be
         // handed out to clients from an endpoint that can be protected from unauthorized access.
-        let authorizationEndpoint = "token.php";
+        authorizationEndpoint = "token.php";
 
         async function RequestAuthorizationToken() {
-          if (authorizationEndpoint) {
-            try {
-              const res = await axios.get(authorizationEndpoint);
-              const token = res.data.token;
-              const region = res.data.region;
-              regionOptions.value = region;
-              authorizationToken = token;
+            if (authorizationEndpoint) {
+                try {
+                    const res = await axios.get(authorizationEndpoint);
+                    const token = res.data.token;
+                    const region = res.data.region;
 
-              console.log('Token fetched from back-end: ' + token);
-            } catch (err) {
-                console.log(err);
+                    $.get(authorizationEndpoint, function(token) {
+                        authorizationToken = token;
+                        regionOptions.value = "eastasia";
+                        updateVoiceList()
+                    })
+
+
+                    console.log('Token fetched from back-end: ' + token);
+                } catch (err) {
+                    console.log(err);
+                }
             }
-          }
         }
     </script>
 
@@ -292,8 +895,10 @@
         var soundContext = undefined;
         try {
             var AudioContext = window.AudioContext // our preferred impl
-                || window.webkitAudioContext       // fallback, mostly when on Safari
-                || false;                          // could not find.
+                ||
+                window.webkitAudioContext // fallback, mostly when on Safari
+                ||
+                false; // could not find.
 
             if (AudioContext) {
                 soundContext = new AudioContext();
@@ -311,7 +916,7 @@
             pronunciationAssessmentResults = [];
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             scenarioStartButton = document.getElementById('scenarioStartButton');
             scenarioStopButton = document.getElementById('scenarioStopButton');
             scenarioSelection = document.getElementById('scenarioSelection');
@@ -352,37 +957,41 @@
                     switch (scenarioSelection.value) {
                         case 'speechRecognizerRecognizeOnce':
                         case 'intentRecognizerRecognizeOnce':
-                        case 'pronunciationAssessmentOnce': return 'recognizeOnceAsync()';
-                        case 'speechRecognizerContinuous': 
-                        case 'pronunciationAssessmentContinuous': return 'startContinuousRecognitionAsync()';
-                        case 'translationRecognizerContinuous': return 'startContinuousTranslation()';
+                        case 'pronunciationAssessmentOnce':
+                            return '开始语音对话';
+                        case 'speechRecognizerContinuous':
+                        case 'pronunciationAssessmentContinuous':
+                            return 'startContinuousRecognitionAsync()';
+                        case 'translationRecognizerContinuous':
+                            return 'startContinuousTranslation()';
                     }
                 })();
 
                 scenarioStartButton.innerHTML = startButtonText;
-                scenarioStopButton.innerHTML = `STOP ${startButtonText}`;
+                scenarioStopButton.innerHTML = `停止语音对话`;
 
                 document.getElementById('languageUnderstandingAppIdRow').style.display =
                     scenarioSelection.value === 'intentRecognizerRecognizeOnce' ? '' : 'none';
 
-                var detailedResultsSupported = 
-                    (scenarioSelection.value === "speechRecognizerRecognizeOnce"
-                    || scenarioSelection.value === "speechRecognizerContinuous");
+                var detailedResultsSupported =
+                    (scenarioSelection.value === "speechRecognizerRecognizeOnce" ||
+                        scenarioSelection.value === "speechRecognizerContinuous");
                 document.getElementById('formatOptionRow').style.display = detailedResultsSupported ? '' : 'none';
 
                 document.getElementById('translationOptionsRow').style.display =
                     scenarioSelection.value == 'translationRecognizerContinuous' ? '' : 'none';
-                
+
                 document.getElementById('pronunciationAssessmentReferenceTextRow').style.display =
                     scenarioSelection.value.includes('pronunciation') ? '' : 'none';
             }
 
-            scenarioSelection.addEventListener("change", function () {
+            scenarioSelection.addEventListener("change", function() {
                 setScenario();
             });
             setScenario();
 
-            scenarioStartButton.addEventListener("click", function () {
+            scenarioStartButton.addEventListener("click", function() {
+
                 switch (scenarioSelection.value) {
                     case 'speechRecognizerRecognizeOnce':
                         doRecognizeOnceAsync();
@@ -406,6 +1015,9 @@
             });
 
             scenarioStopButton.addEventListener("click", function() {
+                is_listen = false
+                //is_listen_finished = true
+
                 switch (scenarioSelection.value) {
                     case 'speechRecognizerRecognizeOnce':
                     case 'intentRecognizerRecognizeOnce':
@@ -416,11 +1028,11 @@
                     case 'speechRecognizerContinuous':
                     case 'translationRecognizerContinuous':
                         reco.stopContinuousRecognitionAsync(
-                            function () {
+                            function() {
                                 reco.close();
                                 reco = undefined;
                             },
-                            function (err) {
+                            function(err) {
                                 reco.close();
                                 reco = undefined;
                             }
@@ -448,10 +1060,9 @@
                         if (device.kind === "audioinput") {
                             if (!device.deviceId) {
                                 window.console.log(
-                                    `Warning: unable to enumerate a microphone deviceId. This may be due to limitations`
-                                    + ` with availability in a non-HTTPS context per mediaDevices constraints.`); 
-                            }
-                            else {
+                                    `Warning: unable to enumerate a microphone deviceId. This may be due to limitations` +
+                                    ` with availability in a non-HTTPS context per mediaDevices constraints.`);
+                            } else {
                                 var opt = document.createElement('option');
                                 opt.value = device.deviceId;
                                 opt.appendChild(document.createTextNode(device.label));
@@ -465,7 +1076,7 @@
                 });
             }
 
-            inputSourceMicrophoneRadio.addEventListener("click", function () {
+            inputSourceMicrophoneRadio.addEventListener("click", function() {
                 enumerateMicrophones();
                 document.getElementById('inputSourceChooseFileButton').disabled = true;
             });
@@ -480,14 +1091,14 @@
                 filePicker.click();
             });
 
-            filePicker.addEventListener("change", function () {
+            filePicker.addEventListener("change", function() {
                 audioFile = filePicker.files[0];
                 document.getElementById('inputSourceFileLabel').innerHTML = audioFile.name;
             });
 
             enumerateMicrophones();
 
-            Initialize(async function (speechSdk) {
+            Initialize(async function(speechSdk) {
                 SpeechSDK = speechSdk;
 
                 // in case we have a function for getting an authorization token, call it.
@@ -556,12 +1167,14 @@
 
         function onRecognizing(sender, recognitionEventArgs) {
             var result = recognitionEventArgs.result;
-            statusDiv.innerHTML += `(recognizing) Reason: ${SpeechSDK.ResultReason[result.reason]}`
-                + ` Text: ${result.text}\r\n`;
+            statusDiv.innerHTML += `(recognizing) Reason: ${SpeechSDK.ResultReason[result.reason]}` +
+                ` Text: ${result.text}\r\n`;
             // Update the hypothesis line in the phrase/result view (only have one)
-            phraseDiv.innerHTML = phraseDiv.innerHTML.replace(/(.*)(^|[\r\n]+).*\[\.\.\.\][\r\n]+/, '$1$2')
-                + `${result.text} [...]\r\n`;
+            phraseDiv.innerHTML = phraseDiv.innerHTML.replace(/(.*)(^|[\r\n]+).*\[\.\.\.\][\r\n]+/, '$1$2') +
+                `${result.text} [...]\r\n`;
             phraseDiv.scrollTop = phraseDiv.scrollHeight;
+            console.log("---------")
+            //is_listen_finished = true
         }
 
         function onRecognized(sender, recognitionEventArgs) {
@@ -573,8 +1186,8 @@
             phraseDiv.scrollTop = phraseDiv.scrollHeight;
 
             statusDiv.innerHTML += `(recognized)  Reason: ${SpeechSDK.ResultReason[result.reason]}`;
-            if (scenarioSelection.value === 'speechRecognizerRecognizeOnce'
-                || scenarioSelection.value === 'intentRecognizerRecognizeOnce') {
+            if (scenarioSelection.value === 'speechRecognizerRecognizeOnce' ||
+                scenarioSelection.value === 'intentRecognizerRecognizeOnce') {
                 // Clear the final results view for single-shot scenarios
                 phraseDiv.innerHTML = '';
             } else {
@@ -589,10 +1202,10 @@
                     break;
                 case SpeechSDK.ResultReason.Canceled:
                     var cancelDetails = SpeechSDK.CancellationDetails.fromResult(result);
-                    statusDiv.innerHTML += ` CancellationReason: ${SpeechSDK.CancellationReason[cancelDetails.reason]}`;
-                        + (cancelDetails.reason === SpeechSDK.CancellationReason.Error 
-                            ? `: ${cancelDetails.errorDetails}` : ``)
-                        + `\r\n`;
+                    statusDiv.innerHTML += ` CancellationReason: ${SpeechSDK.CancellationReason[cancelDetails.reason]}`; +
+                    (cancelDetails.reason === SpeechSDK.CancellationReason.Error ?
+                        `: ${cancelDetails.errorDetails}` : ``) +
+                    `\r\n`;
                     break;
                 case SpeechSDK.ResultReason.RecognizedSpeech:
                 case SpeechSDK.ResultReason.TranslatedSpeech:
@@ -608,8 +1221,8 @@
                         //  ...['Confidence'] is the raw confidence score of an alternate
                         //  ...['Lexical'] and others provide different result forms
                         var displayText = detailedResultJson['DisplayText'];
-                        phraseDiv.innerHTML += `Detailed result for "${displayText}":\r\n`
-                        + `${JSON.stringify(detailedResultJson, null, 2)}\r\n`;
+                        phraseDiv.innerHTML += `Detailed result for "${displayText}":\r\n` +
+                            `${JSON.stringify(detailedResultJson, null, 2)}\r\n`;
                     } else if (result.text) {
                         phraseDiv.innerHTML += `${result.text}\r\n`;
                     }
@@ -623,15 +1236,15 @@
                     if (result.translations) {
                         var resultJson = JSON.parse(result.json);
                         resultJson['privTranslationPhrase']['Translation']['Translations'].forEach(
-                            function (translation) {
-                            phraseDiv.innerHTML += ` [${translation.Language}] ${translation.Text}\r\n`;
-                        });
+                            function(translation) {
+                                phraseDiv.innerHTML += ` [${translation.Language}] ${translation.Text}\r\n`;
+                            });
                     }
 
                     if (scenarioSelection.value.includes('pronunciation')) {
                         var pronunciationAssessmentResult = SpeechSDK.PronunciationAssessmentResult.fromResult(result);
-                        phraseDiv.innerHTML += 
-                        `[Pronunciation result] Accuracy: ${pronunciationAssessmentResult.accuracyScore}; 
+                        phraseDiv.innerHTML +=
+                            `[Pronunciation result] Accuracy: ${pronunciationAssessmentResult.accuracyScore}; 
                        Fluency: ${pronunciationAssessmentResult.fluencyScore};
                        Completeness: ${pronunciationAssessmentResult.completenessScore}.\n`;
                         pronunciationAssessmentResults.push(pronunciationAssessmentResult);
@@ -664,9 +1277,49 @@
 
             scenarioStartButton.disabled = false;
             scenarioStopButton.disabled = true;
+
+            send_prompt ="\nQ:"+ phraseDiv.innerHTML
+            get_result_by_ajax()
         }
 
-        function onCanceled (sender, cancellationEventArgs) {
+        openid = "test"
+        userid = "test"
+        function get_result_by_ajax(){
+            promptt = prompt0 + context + send_prompt +"\nA:"
+            api = "https://v.stylee.top/chatapi?openid="+openid+"&userid="+userid+"&process_type=simple&q="+encodeURIComponent(promptt)
+            $.ajax({
+                url: api,
+                type: 'GET',
+                timeout: 300000,
+                sync:true,
+                success: function(data) {
+                    console.log(data)
+                    //is_listen_finished = true
+                    outdata = data
+                    if (outdata.length > 2) {
+                        if (outdata.substring(0, 2) == "\n\n") {
+                            outdata = outdata.substring(2)
+                        }
+                        if (outdata.substring(0, 1) == "\n") {
+                            outdata = outdata.substring(1)
+                        }
+                    }
+
+                    
+                    if(outdata.length>0){
+                        context +=  send_prompt + "\nA:" + outdata + "\n"
+                        send_prompt = outdata
+                        hechen()
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    reset_send()
+                    $('#output')[0].innerHTML="抱歉出错了，请联系 微信客服 youkpan 解决"
+                }
+            });
+
+        }
+        function onCanceled(sender, cancellationEventArgs) {
             window.console.log(cancellationEventArgs);
 
             statusDiv.innerHTML += "(cancel) Reason: " + SpeechSDK.CancellationReason[cancellationEventArgs.reason];
@@ -726,7 +1379,7 @@
                 phraseDiv.innerHTML += `ERROR: difflib-browser.js is needed for pronunciation assessment calculation; see https://github.com/qiao/difflib.js`;
             }
             // strip punctuation
-            var referenceWords = referenceText.value.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"");
+            var referenceWords = referenceText.value.toLowerCase().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g, "");
             referenceWords = referenceWords.split(' ');
 
             var recognizedWords = [];
@@ -786,10 +1439,10 @@
             // Note: this scenario sample demonstrates result handling via continuation on the recognizeOnceAsync call.
             // The 'recognized' event handler can be used in a similar fashion.
             reco.recognizeOnceAsync(
-                function (successfulResult) {
+                function(successfulResult) {
                     onRecognizedResult(successfulResult);
                 },
-                function (err) {
+                function(err) {
                     window.console.log(err);
                     phraseDiv.innerHTML += "ERROR: " + err;
                 });
@@ -853,15 +1506,15 @@
             // If the event result contains valid audio, it's reason will be ResultReason.SynthesizingAudio
             // Once a complete phrase has been synthesized, the event will be called with
             // ResultReason.SynthesizingAudioComplete and a 0-byte audio payload.
-            reco.synthesizing = function (s, e) {
+            reco.synthesizing = function(s, e) {
                 var audioSize = e.result.audio === undefined ? 0 : e.result.audio.byteLength;
 
-                statusDiv.innerHTML += `(synthesizing) Reason: ${SpeechSDK.ResultReason[e.result.reason]}`
-                    + ` ${audioSize} bytes\r\n`;
+                statusDiv.innerHTML += `(synthesizing) Reason: ${SpeechSDK.ResultReason[e.result.reason]}` +
+                    ` ${audioSize} bytes\r\n`;
 
                 if (e.result.audio && soundContext) {
                     var source = soundContext.createBufferSource();
-                    soundContext.decodeAudioData(e.result.audio, function (newBuffer) {
+                    soundContext.decodeAudioData(e.result.audio, function(newBuffer) {
                         source.buffer = newBuffer;
                         source.connect(soundContext.destination);
                         source.start(0);
@@ -896,10 +1549,10 @@
             // Note: this scenario sample demonstrates result handling via continuation on the recognizeOnceAsync call.
             // The 'recognized' event handler can be used in a similar fashion.
             reco.recognizeOnceAsync(
-                function (successfulResult) {
+                function(successfulResult) {
                     onRecognizedResult(successfulResult);
                 },
-                function (err) {
+                function(err) {
                     window.console.log(err);
                     phraseDiv.innerHTML += "ERROR: " + err;
                 });

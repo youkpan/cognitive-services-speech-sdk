@@ -25,7 +25,7 @@ except ImportError:
 
 # Set up the subscription info for the Speech Service:
 # Replace with your own subscription key and service region (e.g., "westus").
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
+speech_key, service_region = "66fc9b64ff8546b9a6c23433f3f79c36", "eastasia"
 
 # Specify the path to audio files containing speech (mono WAV / PCM with a sampling rate of 16
 # kHz).
@@ -38,13 +38,13 @@ def speech_language_detection_once_from_mic():
     # <SpeechLanguageDetectionWithMicrophone>
     # Creates an AutoDetectSourceLanguageConfig, which defines a number of possible spoken languages
     auto_detect_source_language_config = \
-        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["de-DE", "en-US"])
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["de-DE", "zh-CN"])
 
     # Creates a SpeechConfig from your speech key and region
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
     # Creates a source language recognizer using microphone as audio input.
-    # The default language is "en-us".
+    # The default language is "zh-CN".
     speech_language_detection = speechsdk.SourceLanguageRecognizer(
         speech_config=speech_config, auto_detect_source_language_config=auto_detect_source_language_config)
 
@@ -78,7 +78,7 @@ def speech_language_detection_once_from_file():
     # <SpeechLanguageDetectionWithFile>
     # Creates an AutoDetectSourceLanguageConfig, which defines a number of possible spoken languages
     auto_detect_source_language_config = \
-        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["de-DE", "en-US"])
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["de-DE", "zh-CN"])
 
     # Creates a SpeechConfig from your speech key and region
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
@@ -120,7 +120,7 @@ def speech_language_detection_once_from_continuous():
     # <SpeechContinuousLanguageDetectionWithFile>
     # Creates an AutoDetectSourceLanguageConfig, which defines a number of possible spoken languages
     auto_detect_source_language_config = \
-        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["zh-CN", "en-US"])
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["zh-CN", "zh-CN"])
 
     # Creates a SpeechConfig from your speech key and region
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)

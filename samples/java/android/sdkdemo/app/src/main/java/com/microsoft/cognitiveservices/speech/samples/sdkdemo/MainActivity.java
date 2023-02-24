@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
     //
 
     // Replace below with your own subscription key
-    private static final String SpeechSubscriptionKey = "YourSubscriptionKey";
+    private static final String SpeechSubscriptionKey = "66fc9b64ff8546b9a6c23433f3f79c36";
     // Replace below with your own service region (e.g., "westus").
-    private static final String SpeechRegion = "YourServiceRegion";
+    private static final String SpeechRegion = "eastasia";
 
     //
     // Configuration for intent recognition
